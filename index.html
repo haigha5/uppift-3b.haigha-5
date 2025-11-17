@@ -1,117 +1,163 @@
-
 <!DOCTYPE html>
-<html lang="sv">
-    <head>
-        <meta charset="utf-8">
-        <!--1-  <title> definierar titeln för en webbsida, som visas i webbläsarens flik och i sökresultat.-->
-        <title>MEKAMED</title>
-    <META NAME="DESCRIPTION" CONTENT="MEDICAL EQUIPMENT INDUSTRY MACHINES CARS FORDON MEDICINISK" > 
-        <META NAME="KEYWORDS" CONTENT="MEDICAL MEDICINSK SERVICE MENTAINANCE UNDERHÅL MACHINE MASKIN INDUSTRI INDUSTRY">
-        <META NAME="AUTHER" CONTENT="HAITHAM">
-                <META http-equiv="refresh" CONTENT="120">
-                    <style>
-                        body {background: rgba(65, 168, 65, 0.492)}
-                    </style>
-    </head>
-    <body>
-        <!-- 2- H1, H2, H3 och så vidare. Varje sida bör ha en huvudrubrik (H1) som kan kompletteras med flera underrubriker. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Order Form</title>
+<link rel="stylesheet" href="style.css">
+<script src="modernizr.js"></script>
+<script src="app.js"></script>
+</head>
+<body>
+<form name="order" method="post" action="/submit">
+<h1>Order Form</h1>
+<fieldset>
+<legend>Contact Details</legend>
+<ul>
+<li>
+<label class="required">
+<div>Full Name</div>
+<input name="name" required autofocus>
+</label>
+</li>
+<li>
+<label class="required">
+<div>Email Address</div>
+<input type="email" name="email" required>
+</label>
+</li>
+<li>
+    <label>
+<div>Postal Address</div>
+<input name="address1" placeholder="Address Line 1">
+</label>
+<div>&nbsp;</div>
+<input name="address2" placeholder="Address Line 2">
+<div>&nbsp;</div>
+<input name="city" class="city" placeholder="Town/City">
+<input name="state" class="state" placeholder="State">
+<input name="zip" class="zip" placeholder="Zip Code">
+<div>&nbsp;</div>
+<select name="country">
+<option value="0">Country</option>
+<option value="US">United States</option>
+<option value="CA">Canada</option>
+</select>
+</li>
+<li>
+<label>
+<div>Home Phone No.</div>
+<input type="tel" name="homephone">
+</label>
+</li>
+<li>
+<label>
+<div>Cell Phone No.</div>
+<input type="tel" name="cellphone">
+</label>
+</li>
+<li>
+<label>
+<div>Skype Name</div>
+<input name="skype">
+</label>
+</li>
+<li>
+<label>
+<div>Twitter</div>
+<span class="twitter_prefix">@</span>
+<input name="twitter" class="twitter">
+</label>
+</li>
+</ul>
+</fieldset>
+<fieldset>
+<legend>Login Details</legend>
+<ul>
+<li>
+<label class="required">
+<div>Password</div>
+<input type="password" name="password" required>
+</label>
+</li>
+<li>
+<label class="required">
+<div>Confirm Password</div>
+<input type="password" name="confirm_password" required>
+</label>
+</li>
+</ul>
+</fieldset>
+<fieldset>
+<legend>Order Details</legend>
+<table>
+<thead>
+<tr>
+<th>Product Code</th><th>Description</th><th>Qty</th>
+<th>Price</th><th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+COMP001
+<input type="hidden" name="product_code" value="COMP001">
+</td>
+<td>The Ultimate Smartphone</td>
+<td>
+<input type="number" data-price="399.99" name="quantity"
+value="0" min="0" max="99" maxlength="2">
+</td>
+<td>$399.99</td>
+<td>
+<output name="item_total" class="item_total">$0.00</output>
+</td>
+</tr>
+<tr>
+<td>
+COMP002
+<input type="hidden" name="product_code" value="COMP002">
+</td>
+<td>The Ultimate Tablet</td>
+<td>
+<input type="number" data-price="499.99" name="quantity"
+value="0" min="0" max="99" maxlength="2">
+</td>
+<td>$499.99</td>
+<td>
+<output name="item_total" class="item_total">$0.00</output>
+</td>
+</tr>
+<tr>
+<td>
+COMP003
+<input type="hidden" name="product_code" value="COMP003">
+</td>
+<td>The Ultimate Netbook</td>
+<td>
+<input type="number" data-price="299.99" name="quantity"
+value="0" min="0" max="99" maxlength="2">
+</td>
+<td>$299.99</td>
+<td>
+<output name="item_total" class="item_total">$0.00</output>
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td colspan="4">Order Total</td>
+<td>
+<output name="order_total" id="order_total">$0.00</output>
+</td>
+</tr>
+</tfoot>
+</table>
+</fieldset>
 
-        <H1>HELLO
-        
-    </H1>
-   
-    <br>
-    <h2>My name is Haitham Ghadban (haigha-5) </h2>
-    <h3> <Em>I am a biomedical engineer</Em></h3>
-<!-- 3-  <p> Stycke-text </p> Användning: Taggen p används för att skapa stycken och är den tagg som används flitigast när du skriver text till din hemsida.-->
-
-    <p> I am working for <strong> CAF</strong> group, I am studing only this course .</p>
-
-<br>
-<!-- 4 - <a> används för att skapa en länk (hyperlänk)-->
-         <a target="_blank" href="analys.html"> link to my analys</a>
-         <br>
-         <br>
-
-<!-- 5 <img> används för att infoga en bild på en webbsida genom att länka till en bildfil-->
-         <img width="200"  src="img/77119.jpg" alt="logo">
-         <br>
-
-    <pre>
-       Jag är Social, noggrann, skicklig och punktlig.
-       De är fyra ord som kan användas för att beskriva mig. 
-       För mig är det viktigt att man håller tider och är ärlig i arbetet.
-
-       
- 
-    </pre>
-    <!-- 6- < strong> taggen används för att definiera text med hög prioritet. Innehållet inuti visas vanligtvis med fetstil-->
-    <h2>  <strong>My hobbies</strong>
-    </h2>
-<!-- 7- <em> används för att betona text, vilket vanligtvis visas som kursiv stil i webbläsare-->
-    <!-- 9- <UL> <ul> (unordered list) används för oordnade listor (punktlistor) och <ol> (ordered list)-->
-
-    <ul>
-        <li> <em>Football</em></li>
-        <li>Reading</li>
-        <li>walking</li>
-
-
-
-    </ul>
-
-    <h3> My favorite dish</h3>
-    <ol reversed >
-        <li>Fish</li>
-        <li>Pasta with vegetables </li>
-        <li>Stuffed vine leaves</li>
-    </ol>
-
-<!-- 8 <table> Används för att definiera hela tabellen. Allt innehåll som hör till tabellen placeras inom <table >...</table>-taggarna.  <tr>z <td> -->
-    <!-- <tr> Står för "table row" och används för att skapa en ny rad i tabellen. Varje <tr>-tagg skapar en separat rad-->
-        <!--<tr> Står för "table data" och används för att skapa en standardcell för data i en tabell. Den måste finnas inuti en <tr>-tagg. Ofta används <th> (table heading) för rubrikceller som sedan visas i fetstil-->
-
-        <table border= "1" bgcolor= "grey" >
-            <caption>Agents</caption>
-            <Tr>
-                <th>Country</th>
-                <th>Company</th>
-                <th>Adress</th>
-                <th>Phone</th>
-            </Tr>
-            <tr>
-                <td>Sweden</td>
-                <td>Mekamed</td>
-                <td>Turebergs alle</td>
-                <td>+4676164746</td>
-            
-            </tr>
-            <tr>
-                <td>Germany</td>
-                <td>Mekamed</td>
-                <td>Turebergs alle</td>
-                <td>+4676164746</td>
-            </tr>
-
-        </table>
-        
-        <br>
-         <a download="my analys" href="1a_analys_ltu-haigha-5.pdf">Download my analys pdf</a>
-         <br>
-        <object width="100%"  height="400"  data="1a_analys_ltu-haigha-5.pdf" type=""></object>
-        <br>
-       
-
-    </body>
-
-
-
-
-
-
-
-
-<table><tr><td>
-<ul> eller <ol>
-
+<div class="buttons">
+<input type="submit" value="Submit Order">
+<input type="submit" id="saveOrder" value="Save Order">
+</div>
+</form>
+</body>
 </html>
