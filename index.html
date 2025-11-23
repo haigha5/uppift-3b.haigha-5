@@ -1,163 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Order Form</title>
-<link rel="stylesheet" href="style.css">
-<script src="modernizr.js"></script>
-<script src="app.js"></script>
-</head>
-<body>
-<form name="order" method="post" action="/submit">
-<h1>Order Form</h1>
-<fieldset>
-<legend>Contact Details</legend>
-<ul>
-<li>
-<label class="required">
-<div>Full Name</div>
-<input name="name" required autofocus>
-</label>
-</li>
-<li>
-<label class="required">
-<div>Email Address</div>
-<input type="email" name="email" required>
-</label>
-</li>
-<li>
-    <label>
-<div>Postal Address</div>
-<input name="address1" placeholder="Address Line 1">
-</label>
-<div>&nbsp;</div>
-<input name="address2" placeholder="Address Line 2">
-<div>&nbsp;</div>
-<input name="city" class="city" placeholder="Town/City">
-<input name="state" class="state" placeholder="State">
-<input name="zip" class="zip" placeholder="Zip Code">
-<div>&nbsp;</div>
-<select name="country">
-<option value="0">Country</option>
-<option value="US">United States</option>
-<option value="CA">Canada</option>
-</select>
-</li>
-<li>
-<label>
-<div>Home Phone No.</div>
-<input type="tel" name="homephone">
-</label>
-</li>
-<li>
-<label>
-<div>Cell Phone No.</div>
-<input type="tel" name="cellphone">
-</label>
-</li>
-<li>
-<label>
-<div>Skype Name</div>
-<input name="skype">
-</label>
-</li>
-<li>
-<label>
-<div>Twitter</div>
-<span class="twitter_prefix">@</span>
-<input name="twitter" class="twitter">
-</label>
-</li>
-</ul>
-</fieldset>
-<fieldset>
-<legend>Login Details</legend>
-<ul>
-<li>
-<label class="required">
-<div>Password</div>
-<input type="password" name="password" required>
-</label>
-</li>
-<li>
-<label class="required">
-<div>Confirm Password</div>
-<input type="password" name="confirm_password" required>
-</label>
-</li>
-</ul>
-</fieldset>
-<fieldset>
-<legend>Order Details</legend>
-<table>
-<thead>
-<tr>
-<th>Product Code</th><th>Description</th><th>Qty</th>
-<th>Price</th><th>Total</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-COMP001
-<input type="hidden" name="product_code" value="COMP001">
-</td>
-<td>The Ultimate Smartphone</td>
-<td>
-<input type="number" data-price="399.99" name="quantity"
-value="0" min="0" max="99" maxlength="2">
-</td>
-<td>$399.99</td>
-<td>
-<output name="item_total" class="item_total">$0.00</output>
-</td>
-</tr>
-<tr>
-<td>
-COMP002
-<input type="hidden" name="product_code" value="COMP002">
-</td>
-<td>The Ultimate Tablet</td>
-<td>
-<input type="number" data-price="499.99" name="quantity"
-value="0" min="0" max="99" maxlength="2">
-</td>
-<td>$499.99</td>
-<td>
-<output name="item_total" class="item_total">$0.00</output>
-</td>
-</tr>
-<tr>
-<td>
-COMP003
-<input type="hidden" name="product_code" value="COMP003">
-</td>
-<td>The Ultimate Netbook</td>
-<td>
-<input type="number" data-price="299.99" name="quantity"
-value="0" min="0" max="99" maxlength="2">
-</td>
-<td>$299.99</td>
-<td>
-<output name="item_total" class="item_total">$0.00</output>
-</td>
-</tr>
-</tbody>
-<tfoot>
-<tr>
-<td colspan="4">Order Total</td>
-<td>
-<output name="order_total" id="order_total">$0.00</output>
-</td>
-</tr>
-</tfoot>
-</table>
-</fieldset>
+<!-- Input-fält för Namn -->
+<label for="namn_input">Ditt namn:</label>
+<input type="text" id="namn_input" name="namn">
+<!-- Input-fält för Telefon -->
+<label for="telefon_input">Telefon:</label>
+<input type="tel" id="telefon_input" name="telefon">
 
-<div class="buttons">
-<input type="submit" value="Submit Order">
-<input type="submit" id="saveOrder" value="Save Order">
-</div>
+<br><br> <!-- Lite radbrytning för bättre layout -->
+
+<!-- Rullgardinsmeny (Select-lista) för Prioritet -->
+<label for="prioritet_select">Prioritet:</label>
+<select id="prioritet_select" name="prioritet">
+    <option value="1">Låg</option>
+    <option value="2">Normal</option>
+    <option value="3">Hög</option>
+</select>
+<!-- Rullgardinsmeny (Select-lista) för Ort -->
+<label for="ort_select">Tilldela till ort:</label>
+<select id="ort_select" name="ort">
+    <option value="gbg">Göteborg</option>
+    <option value="sthlm">Stockholm</option>
+    <option value="ume">Umeå</option>
+    <option value="lule">Luleå</option>
+</select>
+<!-- Rullgardinsmeny (Select-lista) för Kategori -->
+<label for="kategori_select">Kategorin:</label>
+<select id="kategori_select" name="kategori">
+    <option value="fakt">Fakturering</option>
+    <option value="net">Internet</option>
+    <option value="tel">Telefoni</option>
+    <option value="epost">E-post</option>
+</select>
+<!-- Input-fält för Rubrik (en rad) -->
+<label for="rubrik_input">Rubrik:</label>
+<input type="text" id="rubrik_input" name="rubrik">
+
+<br><br> <!-- Lite radbrytning för bättre layout -->
+
+<!-- Textområde för Beskrivning (flera rader) -->
+<label for="beskrivning_textarea">Beskrivning:</label>
+<textarea id="beskrivning_textarea" name="beskrivning" rows="4" cols="50"></textarea>
+<!-- Start av formuläret -->
+<!-- Action-attributet specificerar var datan ska skickas. -->
+<!-- Method-attributet specificerar att data ska skickas med POST. -->
+<form action="https://swplayground.ltu.se/resources/parse_form.php" method="POST">
+
+    <!-- Fält från tidigare steg -->
+    <label for="namn_input">Ditt namn:</label>
+    <input type="text" id="namn_input" name="namn"><br><br>
+
+    <label for="telefon_input">Telefon:</label>
+    <input type="tel" id="telefon_input" name="telefon"><br><br>
+
+    <label for="prioritet_select">Prioritet:</label>
+    <select id="prioritet_select" name="prioritet">
+        <option value="1">Låg</option>
+        <option value="2">Normal</option>
+        <option value="3">Hög</option>
+    </select><br><br>
+
+    <label for="ort_select">Tilldela till ort:</label>
+    <select id="ort_select" name="ort">
+        <option value="gbg">Göteborg</option>
+        <option value="sthlm">Stockholm</option>
+        <option value="ume">Umeå</option>
+        <option value="lule">Luleå</option>
+    </select><br><br>
+
+    <label for="kategori_select">Kategorin:</label>
+    <select id="kategori_select" name="kategori">
+        <option value="fakt">Fakturering</option>
+        <option value="net">Internet</option>
+        <option value="tel">Telefoni</option>
+        <option value="epost">E-post</option>
+    </select><br><br>
+
+    <label for="rubrik_input">Rubrik:</label>
+    <input type="text" id="rubrik_input" name="rubrik"><br><br>
+
+    <label for="beskrivning_textarea">Beskrivning:</label><br>
+    <textarea id="beskrivning_textarea" name="beskrivning" rows="4" cols="50"></textarea><br><br>
+
+    <!-- Knapp för att skicka formuläret (Submit) -->
+    <input type="submit" name="skicka" value="Submit">
+
+    <!-- Knapp för att nollställa/tömma formuläret (Reset) -->
+    <input type="reset" value="Rensa formulär">
+
 </form>
-</body>
-</html>
+<!-- Slut på formuläret -->
