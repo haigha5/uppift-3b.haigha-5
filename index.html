@@ -1,61 +1,118 @@
-<!-- Input-fält för Namn -->
-<label for="namn_input">Ditt namn:</label>
-    <input type="text" id="namn_input" name="namn"><br><br>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulär med Sammanfattning</title>
+    <style>
+        #sammanfattning {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
 
-<!-- Input-fält för Telefon -->
-<label for="telefon_input">Telefon:</label>
-    <input type="tel" id="telefon_input" name="telefon"><br><br>
+<h2>Formulär</h2>
 
- <!-- Lite radbrytning för bättre layout -->
+<form id="mittFormular">
+    <!-- Input-fält för Namn -->
+    <label for="namn_input">Ditt namn:</label>
+    <input type="text" id="namn_input" name="namn" required><br><br>
 
-<!-- Rullgardinsmeny (Select-lista) för Prioritet -->
+    <!-- Input-fält för Telefon -->
+    <label for="telefon_input">Telefon:</label>
+    <input type="tel" id="telefon_input" name="telefon" required><br><br>
 
+    <!-- Rullgardinsmeny (Select-lista) för Prioritet -->
     <label for="prioritet_select">Prioritet:</label>
-    <select id="prioritet_select" name="prioritet">
+    <select id="prioritet_select" name="prioritet" required>
         <option value="1">Låg</option>
         <option value="2">Normal</option>
         <option value="3">Hög</option>
     </select><br><br>
 
-<!-- Rullgardinsmeny (Select-lista) för Ort -->
- <label for="ort_select">Tilldela till ort:</label>
-    <select id="ort_select" name="ort">
+    <!-- Rullgardinsmeny (Select-lista) för Ort -->
+    <label for="ort_select">Tilldela till ort:</label>
+    <select id="ort_select" name="ort" required>
         <option value="gbg">Göteborg</option>
         <option value="sthlm">Stockholm</option>
         <option value="ume">Umeå</option>
         <option value="lule">Luleå</option>
     </select><br><br>
 
-<!-- Rullgardinsmeny (Select-lista) för Kategori -->
- <label for="kategori_select">Kategorin:</label>
-    <select id="kategori_select" name="kategori">
+    <!-- Rullgardinsmeny (Select-lista) för Kategori -->
+    <label for="kategori_select">Kategorin:</label>
+    <select id="kategori_select" name="kategori" required>
         <option value="fakt">Fakturering</option>
         <option value="net">Internet</option>
         <option value="tel">Telefoni</option>
         <option value="epost">E-post</option>
     </select><br><br>
 
-<!-- Input-fält för Rubrik (en rad) -->
+    <!-- Input-fält för Rubrik -->
     <label for="rubrik_input">Rubrik:</label>
-    <input type="text" id="rubrik_input" name="rubrik"><br><br>
+    <input type="text" id="rubrik_input" name="rubrik" required><br><br>
 
-<br><br> <!-- Lite radbrytning för bättre layout -->
+    <!-- Textområde för Beskrivning -->
+    <label for="beskrivning_textarea">Beskrivning:</label><br>
+    <textarea id="beskrivning_textarea" name="beskrivning" rows="4" cols="50" required></textarea><br><br>
 
-<!-- Textområde för Beskrivning (flera rader) -->
-<label for="beskrivning_textarea">Beskrivning:</label><br>
-    <textarea id="beskrivning_textarea" name="beskrivning" rows="4" cols="50"></textarea><br><br>
-
-<!-- Start av formuläret -->
-<!-- Action-attributet specificerar var datan ska skickas. -->
-<!-- Method-attributet specificerar att data ska skickas med POST. -->
-
-    
-
-    <!-- Knapp för att skicka formuläret (Submit) -->
-    <input type="submit" name="skicka" value="Submit">
-
-    <!-- Knapp för att nollställa/tömma formuläret (Reset) -->
+    <!-- Knapp för att skicka formuläret -->
+    <input type="submit" name="skicka" value="Skicka">
     <input type="reset" value="Rensa formulär">
-
 </form>
-<!-- Slut på formuläret -->
+
+<!-- Div för att visa sammanfattningen -->
+<div id="sammanfattning" style="display:none;">
+    <h3>Sammanfattning av din inlämning:</h3>
+    <p id="sammanfattning_namn"></p>
+    <p id="sammanfattning_telefon"></p>
+    <p id="sammanfattning_prioritet"></p>
+    <p id="sammanfattning_ort"></p>
+    <p id="sammanfattning_kategori"></p>
+    <p id="sammanfattning_rubrik"></p>
+    <p id="sammanfattning_beskrivning"></p>
+</div>
+
+<script>
+    // Hämta formuläret och sammanfattnings-diven
+    const form = document.getElementById('mittFormular');
+    const sammanfattningDiv = document.getElementById('sammanfattning');
+    
+    // Funktion för att hantera formulärinlämning
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();  // Förhindra att formuläret skickas iväg
+        
+        // Hämta värden från formuläret
+        const namn = document.getElementById('namn_input').value;
+        const telefon = document.getElementById('telefon_input').value;
+        const prioritet = document.getElementById('prioritet_select').value;
+        const ort = document.getElementById('ort_select').value;
+        const kategori = document.getElementById('kategori_select').value;
+        const rubrik = document.getElementById('rubrik_input').value;
+        const beskrivning = document.getElementById('beskrivning_textarea').value;
+
+        // Skapa sammanfattningstext
+        const prioritetText = (prioritet === "1" ? "Låg" : (prioritet === "2" ? "Normal" : "Hög"));
+        const ortText = ort === "gbg" ? "Göteborg" : (ort === "sthlm" ? "Stockholm" : (ort === "ume" ? "Umeå" : "Luleå"));
+        const kategoriText = (kategori === "fakt" ? "Fakturering" : (kategori === "net" ? "Internet" : (kategori === "tel" ? "Telefoni" : "E-post")));
+
+        // Visa sammanfattningen
+        document.getElementById('sammanfattning_namn').textContent = `Namn: ${namn}`;
+        document.getElementById('sammanfattning_telefon').textContent = `Telefon: ${telefon}`;
+        document.getElementById('sammanfattning_prioritet').textContent = `Prioritet: ${prioritetText}`;
+        document.getElementById('sammanfattning_ort').textContent = `Ort: ${ortText}`;
+        document.getElementById('sammanfattning_kategori').textContent = `Kategori: ${kategoriText}`;
+        document.getElementById('sammanfattning_rubrik').textContent = `Rubrik: ${rubrik}`;
+        document.getElementById('sammanfattning_beskrivning').textContent = `Beskrivning: ${beskrivning}`;
+
+        // Visa sammanfattningen
+        sammanfattningDiv.style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
