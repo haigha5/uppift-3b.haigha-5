@@ -1,55 +1,14 @@
 <!-- Input-fält för Namn -->
 <label for="namn_input">Ditt namn:</label>
-<input type="text" id="namn_input" name="namn">
-<!-- Input-fält för Telefon -->
-<label for="telefon_input">Telefon:</label>
-<input type="tel" id="telefon_input" name="telefon">
-
-<br><br> <!-- Lite radbrytning för bättre layout -->
-
-<!-- Rullgardinsmeny (Select-lista) för Prioritet -->
-<label for="prioritet_select">Prioritet:</label>
-<select id="prioritet_select" name="prioritet">
-    <option value="1">Låg</option>
-    <option value="2">Normal</option>
-    <option value="3">Hög</option>
-</select>
-<!-- Rullgardinsmeny (Select-lista) för Ort -->
-<label for="ort_select">Tilldela till ort:</label>
-<select id="ort_select" name="ort">
-    <option value="gbg">Göteborg</option>
-    <option value="sthlm">Stockholm</option>
-    <option value="ume">Umeå</option>
-    <option value="lule">Luleå</option>
-</select>
-<!-- Rullgardinsmeny (Select-lista) för Kategori -->
-<label for="kategori_select">Kategorin:</label>
-<select id="kategori_select" name="kategori">
-    <option value="fakt">Fakturering</option>
-    <option value="net">Internet</option>
-    <option value="tel">Telefoni</option>
-    <option value="epost">E-post</option>
-</select>
-<!-- Input-fält för Rubrik (en rad) -->
-<label for="rubrik_input">Rubrik:</label>
-<input type="text" id="rubrik_input" name="rubrik">
-
-<br><br> <!-- Lite radbrytning för bättre layout -->
-
-<!-- Textområde för Beskrivning (flera rader) -->
-<label for="beskrivning_textarea">Beskrivning:</label>
-<textarea id="beskrivning_textarea" name="beskrivning" rows="4" cols="50"></textarea>
-<!-- Start av formuläret -->
-<!-- Action-attributet specificerar var datan ska skickas. -->
-<!-- Method-attributet specificerar att data ska skickas med POST. -->
-<form action="https://swplayground.ltu.se/resources/parse_form.php" method="POST">
-
-    <!-- Fält från tidigare steg -->
-    <label for="namn_input">Ditt namn:</label>
     <input type="text" id="namn_input" name="namn"><br><br>
 
-    <label for="telefon_input">Telefon:</label>
+<!-- Input-fält för Telefon -->
+<label for="telefon_input">Telefon:</label>
     <input type="tel" id="telefon_input" name="telefon"><br><br>
+
+ <!-- Lite radbrytning för bättre layout -->
+
+<!-- Rullgardinsmeny (Select-lista) för Prioritet -->
 
     <label for="prioritet_select">Prioritet:</label>
     <select id="prioritet_select" name="prioritet">
@@ -58,7 +17,8 @@
         <option value="3">Hög</option>
     </select><br><br>
 
-    <label for="ort_select">Tilldela till ort:</label>
+<!-- Rullgardinsmeny (Select-lista) för Ort -->
+ <label for="ort_select">Tilldela till ort:</label>
     <select id="ort_select" name="ort">
         <option value="gbg">Göteborg</option>
         <option value="sthlm">Stockholm</option>
@@ -66,7 +26,8 @@
         <option value="lule">Luleå</option>
     </select><br><br>
 
-    <label for="kategori_select">Kategorin:</label>
+<!-- Rullgardinsmeny (Select-lista) för Kategori -->
+ <label for="kategori_select">Kategorin:</label>
     <select id="kategori_select" name="kategori">
         <option value="fakt">Fakturering</option>
         <option value="net">Internet</option>
@@ -74,11 +35,21 @@
         <option value="epost">E-post</option>
     </select><br><br>
 
+<!-- Input-fält för Rubrik (en rad) -->
     <label for="rubrik_input">Rubrik:</label>
     <input type="text" id="rubrik_input" name="rubrik"><br><br>
 
-    <label for="beskrivning_textarea">Beskrivning:</label><br>
+<br><br> <!-- Lite radbrytning för bättre layout -->
+
+<!-- Textområde för Beskrivning (flera rader) -->
+<label for="beskrivning_textarea">Beskrivning:</label><br>
     <textarea id="beskrivning_textarea" name="beskrivning" rows="4" cols="50"></textarea><br><br>
+
+<!-- Start av formuläret -->
+<!-- Action-attributet specificerar var datan ska skickas. -->
+<!-- Method-attributet specificerar att data ska skickas med POST. -->
+
+    
 
     <!-- Knapp för att skicka formuläret (Submit) -->
     <input type="submit" name="skicka" value="Submit">
