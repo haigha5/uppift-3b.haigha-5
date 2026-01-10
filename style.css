@@ -74,3 +74,14 @@ button:hover {
     font-weight: bold;
     color: green;
 }
+/* Rensa-knapp */
+.reset-btn {
+    background-color: #ccc;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Hover-effekt för rensa-knappen */
+.reset-btn:hover {
+    background-color: #999;
+}
