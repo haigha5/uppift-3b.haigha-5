@@ -1,0 +1,76 @@
+/* Grundstil för hela sidan */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container som håller formuläret */
+.container {
+    width: 90%;
+    max-width: 500px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+/* Rubriker */
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Etiketter */
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 12px;
+}
+
+/* Alla input-fält */
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Radioknappar */
+.radio-group label {
+    font-weight: normal;
+    margin-right: 10px;
+}
+
+/* Skicka-knapp */
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Hover-effekt */
+button:hover {
+    background-color: #005fa3;
+}
+
+/* Svarsmeddelande */
+#responseMessage {
+    margin-top: 20px;
+}
+
+/* Tack-text */
+.thanks {
+    margin-top: 15px;
+    font-weight: bold;
+    color: green;
+}

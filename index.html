@@ -1,118 +1,129 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
+    <!-- Anger teckenkodning -->
     <meta charset="UTF-8">
+
+    <!-- Gör sidan responsiv på mobil -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulär med Sammanfattning</title>
-    <style>
-        #sammanfattning {
-            margin-top: 20px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: #f9f9f9;
-        }
-    </style>
+
+    <!-- Titel som visas i webbläsarfliken -->
+    <title>Kontaktformulär</title>
+
+    <!-- Länkar till CSS-filen -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>Formulär</h2>
+    <!-- Huvudcontainer för formuläret -->
+    <div class="container">
 
-<form id="mittFormular">
-    <!-- Input-fält för Namn -->
-    <label for="namn_input">Ditt namn:</label>
-    <input type="text" id="namn_input" name="namn" required><br><br>
+        <!-- Rubrik -->
+        <h1>Kontaktformulär</h1>
 
-    <!-- Input-fält för Telefon -->
-    <label for="telefon_input">Telefon:</label>
-    <input type="tel" id="telefon_input" name="telefon" required><br><br>
+        <!-- Formulär -->
+        <!-- onsubmit kör JavaScript-funktionen showResponse -->
+        <form id="contactForm" onsubmit="showResponse(event)">
 
-    <!-- Rullgardinsmeny (Select-lista) för Prioritet -->
-    <label for="prioritet_select">Prioritet:</label>
-    <select id="prioritet_select" name="prioritet" required>
-        <option value="1">Låg</option>
-        <option value="2">Normal</option>
-        <option value="3">Hög</option>
-    </select><br><br>
+            <!-- Namn -->
+            <label for="name">Namn:</label>
+            <input type="text" id="name" required>
 
-    <!-- Rullgardinsmeny (Select-lista) för Ort -->
-    <label for="ort_select">Tilldela till ort:</label>
-    <select id="ort_select" name="ort" required>
-        <option value="gbg">Göteborg</option>
-        <option value="sthlm">Stockholm</option>
-        <option value="ume">Umeå</option>
-        <option value="lule">Luleå</option>
-    </select><br><br>
+            <!-- E-post -->
+            <label for="email">E-postadress:</label>
+            <input type="email" id="email" required>
 
-    <!-- Rullgardinsmeny (Select-lista) för Kategori -->
-    <label for="kategori_select">Kategorin:</label>
-    <select id="kategori_select" name="kategori" required>
-        <option value="fakt">Fakturering</option>
-        <option value="net">Internet</option>
-        <option value="tel">Telefoni</option>
-        <option value="epost">E-post</option>
-    </select><br><br>
+            <!-- Telefon -->
+            <label for="phone">Telefon:</label>
+            <input type="tel" id="phone">
 
-    <!-- Input-fält för Rubrik -->
-    <label for="rubrik_input">Rubrik:</label>
-    <input type="text" id="rubrik_input" name="rubrik" required><br><br>
+            <!-- Prioritet -->
+            <label for="priority">Prioritet:</label>
+            <select id="priority">
+                <option>Låg</option>
+                <option>Normal</option>
+                <option>Hög</option>
+            </select>
 
-    <!-- Textområde för Beskrivning -->
-    <label for="beskrivning_textarea">Beskrivning:</label><br>
-    <textarea id="beskrivning_textarea" name="beskrivning" rows="4" cols="50" required></textarea><br><br>
+            <!-- Ort (radioknappar) -->
+            <label>Ort:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="city" value="Göteborg" required> Göteborg</label>
+                <label><input type="radio" name="city" value="Stockholm"> Stockholm</label>
+                <label><input type="radio" name="city" value="Umeå"> Umeå</label>
+                <label><input type="radio" name="city" value="Luleå"> Luleå</label>
+            </div>
 
-    <!-- Knapp för att skicka formuläret -->
-    <input type="submit" name="skicka" value="Skicka">
-    <input type="reset" value="Rensa formulär">
-</form>
+            <!-- Kategori -->
+            <label for="category">Kategori:</label>
+            <select id="category">
+                <option>Fakturering</option>
+                <option>Internet</option>
+                <option>Telefoni</option>
+                <option>E-post</option>
+            </select>
 
-<!-- Div för att visa sammanfattningen -->
-<div id="sammanfattning" style="display:none;">
-    <h3>Sammanfattning av din inlämning:</h3>
-    <p id="sammanfattning_namn"></p>
-    <p id="sammanfattning_telefon"></p>
-    <p id="sammanfattning_prioritet"></p>
-    <p id="sammanfattning_ort"></p>
-    <p id="sammanfattning_kategori"></p>
-    <p id="sammanfattning_rubrik"></p>
-    <p id="sammanfattning_beskrivning"></p>
-</div>
+            <!-- Rubrik -->
+            <label for="subject">Rubrik:</label>
+            <input type="text" id="subject">
 
-<script>
-    // Hämta formuläret och sammanfattnings-diven
-    const form = document.getElementById('mittFormular');
-    const sammanfattningDiv = document.getElementById('sammanfattning');
-    
-    // Funktion för att hantera formulärinlämning
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();  // Förhindra att formuläret skickas iväg
-        
-        // Hämta värden från formuläret
-        const namn = document.getElementById('namn_input').value;
-        const telefon = document.getElementById('telefon_input').value;
-        const prioritet = document.getElementById('prioritet_select').value;
-        const ort = document.getElementById('ort_select').value;
-        const kategori = document.getElementById('kategori_select').value;
-        const rubrik = document.getElementById('rubrik_input').value;
-        const beskrivning = document.getElementById('beskrivning_textarea').value;
+            <!-- Meddelande -->
+            <label for="message">Meddelande:</label>
+            <textarea id="message" rows="4"></textarea>
 
-        // Skapa sammanfattningstext
-        const prioritetText = (prioritet === "1" ? "Låg" : (prioritet === "2" ? "Normal" : "Hög"));
-        const ortText = ort === "gbg" ? "Göteborg" : (ort === "sthlm" ? "Stockholm" : (ort === "ume" ? "Umeå" : "Luleå"));
-        const kategoriText = (kategori === "fakt" ? "Fakturering" : (kategori === "net" ? "Internet" : (kategori === "tel" ? "Telefoni" : "E-post")));
+            <!-- Skicka-knapp -->
+            <button type="submit">Skicka</button>
+        </form>
 
-        // Visa sammanfattningen
-        document.getElementById('sammanfattning_namn').textContent = `Namn: ${namn}`;
-        document.getElementById('sammanfattning_telefon').textContent = `Telefon: ${telefon}`;
-        document.getElementById('sammanfattning_prioritet').textContent = `Prioritet: ${prioritetText}`;
-        document.getElementById('sammanfattning_ort').textContent = `Ort: ${ortText}`;
-        document.getElementById('sammanfattning_kategori').textContent = `Kategori: ${kategoriText}`;
-        document.getElementById('sammanfattning_rubrik').textContent = `Rubrik: ${rubrik}`;
-        document.getElementById('sammanfattning_beskrivning').textContent = `Beskrivning: ${beskrivning}`;
+        <!-- Här visas svarsmeddelandet efter skickat formulär -->
+        <div id="responseMessage"></div>
+    </div>
 
-        // Visa sammanfattningen
-        sammanfattningDiv.style.display = 'block';
-    });
-</script>
+    <!-- JavaScript -->
+    <script>
+        /*
+            Funktion som körs när formuläret skickas
+        */
+        function showResponse(event) {
+
+            // Förhindrar att sidan laddas om
+            event.preventDefault();
+
+            // Hämtar alla värden från formuläret
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const priority = document.getElementById("priority").value;
+            const category = document.getElementById("category").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
+            const city = document.querySelector('input[name="city"]:checked').value;
+
+            // Skapar svarsmeddelandet som visas på sidan
+            document.getElementById("responseMessage").innerHTML = `
+                <h2>Tack för ditt meddelande!</h2>
+                <p>Vi har mottagit följande information:</p>
+
+                <ul>
+                    <li><strong>Namn:</strong> ${name}</li>
+                    <li><strong>E-post:</strong> ${email}</li>
+                    <li><strong>Telefon:</strong> ${phone}</li>
+                    <li><strong>Prioritet:</strong> ${priority}</li>
+                    <li><strong>Ort:</strong> ${city}</li>
+                    <li><strong>Kategori:</strong> ${category}</li>
+                    <li><strong>Rubrik:</strong> ${subject}</li>
+                    <li><strong>Meddelande:</strong> ${message}</li>
+                </ul>
+
+                <p class="thanks">
+                    Tack! Vi återkommer så snart som möjligt.
+                </p>
+            `;
+
+            // Gömmer formuläret efter att det skickats
+            document.getElementById("contactForm").style.display = "none";
+        }
+    </script>
 
 </body>
 </html>
